@@ -5,6 +5,12 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+/**
+ * 
+ * @author Alesandro Façanha
+ * @since 2014
+ *
+ */
 
 @Entity
 public class Filme {
