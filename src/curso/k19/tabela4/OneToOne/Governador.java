@@ -1,25 +1,19 @@
-package curso.k19.tabela4;
+package curso.k19.tabela4.OneToOne;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="estado")
-public class Estado {
-
+@Table(name="governador")
+public class Governador {
 	@Id @GeneratedValue
 	private Long id;
 	
 	private String nome;
 	
-	@OneToOne
-	private Governador governador;
-	
-	public Estado() {
-	
+	public Governador() {
 	}
 
 	public Long getId() {
@@ -37,14 +31,4 @@ public class Estado {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public Governador getGovernador() {
-		return governador;
-	}
-
-	public void setGovernador(Governador governador) {
-		this.governador = governador;
-	}
-	
-	
 }

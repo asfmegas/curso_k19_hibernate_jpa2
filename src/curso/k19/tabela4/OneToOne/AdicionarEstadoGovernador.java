@@ -1,4 +1,4 @@
-package curso.k19.tabela5;
+package curso.k19.tabela4.OneToOne;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Adicionar")
-public class Adicionar extends HttpServlet {
+@WebServlet("/AdicionarEstadoGovernador")
+public class AdicionarEstadoGovernador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Adicionar() {
+    public AdicionarEstadoGovernador() {
         super();
     }
 
@@ -25,35 +25,37 @@ public class Adicionar extends HttpServlet {
 		try{
 			EntityManagerFactory factory = 
 					Persistence.createEntityManagerFactory("sistema");
+			/*
 			EntityManager em = factory.createEntityManager();
 			try{
 				em.getTransaction().begin();
-				Funcionario f = new Funcionario();
-				f.setNome("Carbono Torrado da Silva");
+				Governador gov = new Governador();
+				Estado uf = new Estado();
 				
-				Departamento d = new Departamento();
-				d.setNome("TI");
-				d.getFuncionarios().add(f);
+				gov.setNome("Julio Cesar");
+				uf.setNome("Roma");
+				uf.setGovernador(gov);
 				
-				em.persist(f);
-				em.persist(d);
+				em.persist(gov);
+				em.persist(uf);
 				
 				em.getTransaction().commit();
-				out.println("O dados foram inseridos com sucesso!");
+				out.println("Dados salvos com sucesso!<br /> ");
+				
 			}catch(Exception e){
-				out.println("Erro ao inserir dados!<br />"+e.getMessage());
+				out.println("Erro ao salvar dados nas tabelas<br /> "+e.getMessage());
 				em.getTransaction().rollback();
 			}
-			
 			em.close();
+			*/
 			factory.close();
+			
 		}catch(Exception e){
-			out.println("Erro ao criar tabelas<br />"+e.getMessage());
+			out.println("Erro ao criar tabelas<br /> "+e.getMessage());
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	}
 
 }

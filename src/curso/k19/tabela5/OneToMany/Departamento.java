@@ -1,4 +1,4 @@
-package curso.k19.tabela5;
+package curso.k19.tabela5.OneToMany;
 
 import java.util.ArrayList;
 import java.util.Collection;

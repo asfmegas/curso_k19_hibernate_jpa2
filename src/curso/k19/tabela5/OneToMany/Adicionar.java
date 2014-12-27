@@ -1,4 +1,4 @@
-package curso.k19.tabela4;
+package curso.k19.tabela5.OneToMany;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AdicionarEstadoGovernador")
-public class AdicionarEstadoGovernador extends HttpServlet {
+@WebServlet("/Adicionar")
+public class Adicionar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdicionarEstadoGovernador() {
+    public Adicionar() {
         super();
     }
 
@@ -25,37 +25,35 @@ public class AdicionarEstadoGovernador extends HttpServlet {
 		try{
 			EntityManagerFactory factory = 
 					Persistence.createEntityManagerFactory("sistema");
-			/*
 			EntityManager em = factory.createEntityManager();
 			try{
 				em.getTransaction().begin();
-				Governador gov = new Governador();
-				Estado uf = new Estado();
+				Funcionario f = new Funcionario();
+				f.setNome("Carbono Torrado da Silva");
 				
-				gov.setNome("Julio Cesar");
-				uf.setNome("Roma");
-				uf.setGovernador(gov);
+				Departamento d = new Departamento();
+				d.setNome("TI");
+				d.getFuncionarios().add(f);
 				
-				em.persist(gov);
-				em.persist(uf);
+				em.persist(f);
+				em.persist(d);
 				
 				em.getTransaction().commit();
-				out.println("Dados salvos com sucesso!<br /> ");
-				
+				out.println("O dados foram inseridos com sucesso!");
 			}catch(Exception e){
-				out.println("Erro ao salvar dados nas tabelas<br /> "+e.getMessage());
+				out.println("Erro ao inserir dados!<br />"+e.getMessage());
 				em.getTransaction().rollback();
 			}
-			em.close();
-			*/
-			factory.close();
 			
+			em.close();
+			factory.close();
 		}catch(Exception e){
-			out.println("Erro ao criar tabelas<br /> "+e.getMessage());
+			out.println("Erro ao criar tabelas<br />"+e.getMessage());
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	}
 
 }
