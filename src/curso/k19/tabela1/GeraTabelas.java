@@ -32,10 +32,10 @@ public class GeraTabelas extends HttpServlet {
 			em.getTransaction().begin();
 			//salvando dados
 			Autor autor = new Autor();
-			autor.setNome("Machado de Assis");
+			autor.setNome("William Shekespeare");
 			Editora ed = new Editora();
-			ed.setNome("K19");
-			ed.setEmail("k19@.k19.com");
+			ed.setNome("evolucao");
+			ed.setEmail("evolucao@.ev.com");
 			
 			try{
 			em.persist(autor);
@@ -46,7 +46,8 @@ public class GeraTabelas extends HttpServlet {
 			}
 
 			factory.close();
-			out.println("<h1>Tabelas criadas com sucesso!</h1>");
+			response.sendRedirect("listarautor.jsp");
+			//out.println("<h1>Tabelas criadas com sucesso!</h1>");
 		}catch(Exception e){
 			out.println("Erro ao gerar tabelas "+e.getMessage());
 		}
