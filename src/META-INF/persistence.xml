@@ -4,11 +4,10 @@
 
       <properties>
           <provider>org.hibernate.ejb.HibernatePersistence</provider>
-          <class>curso.k19.tabela1.Editora</class>
-          <class>curso.k19.tabela1.Autor</class>
-          <class>curso.k19.tabela2.Usuario</class>
-          <class>curso.k19.tabela3.Turma</class>
-          <class>curso.k19.tabela3.Periodo</class>
+          <class>curso.k19.tabela.Autor</class>
+          <class>curso.k19.tabela.Editora</class>
+          <!-- class>curso.k19.tabela4.Governador</class>
+          <class>curso.k19.tabela4.Estado</class> -->
          <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
          <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
          <property name="hibernate.connection.username" value="root"/>

@@ -33,7 +33,5 @@ public class Turma {
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
-	
-	
 }
 
