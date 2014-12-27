@@ -1,5 +1,6 @@
 package curso.k19.tabela5;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -19,8 +20,8 @@ public class Departamento {
 	private String nome;
 	
 	@OneToMany
-	@JoinTable(name="dep_func", joinColumns=@JoinColumn(name="dep_id"), inverseJoinColumns=@JoinColumn(name="func_id"))
-	private Collection<Funcionario> funcionarios;
+	//@JoinTable(name="dep_func", joinColumns=@JoinColumn(name="dep_id"), inverseJoinColumns=@JoinColumn(name="func_id"))
+	private Collection<Funcionario> funcionarios = new ArrayList<Funcionario>();
 	
 	public Departamento() {
 		// TODO Auto-generated constructor stub

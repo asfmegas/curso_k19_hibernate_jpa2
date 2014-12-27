@@ -3,6 +3,7 @@ package curso.k19.tabela5;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
@@ -24,8 +25,27 @@ public class Adicionar extends HttpServlet {
 		try{
 			EntityManagerFactory factory = 
 					Persistence.createEntityManagerFactory("sistema");
+			EntityManager em = factory.createEntityManager();
+			try{
+				em.getTransaction().begin();
+				Funcionario f = new Funcionario();
+				f.setNome("Carbono Torrado da Silva");
+				
+				Departamento d = new Departamento();
+				d.setNome("TI");
+				d.getFuncionarios().add(f);
+				
+				em.persist(f);
+				em.persist(d);
+				
+				em.getTransaction().commit();
+				out.println("O dados foram inseridos com sucesso!");
+			}catch(Exception e){
+				out.println("Erro ao inserir dados!<br />"+e.getMessage());
+				em.getTransaction().rollback();
+			}
 			
-			out.println("Tabelas criadas com sucesso!");
+			em.close();
 			factory.close();
 		}catch(Exception e){
 			out.println("Erro ao criar tabelas<br />"+e.getMessage());
