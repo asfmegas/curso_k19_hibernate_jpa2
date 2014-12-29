@@ -2,6 +2,7 @@ package curso.k19.tabela9.objEmb;
 
 import java.util.Calendar;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class Pessoa {
 	@Temporal(TemporalType.DATE)
 	private Calendar nasc;
 	
-	@OneToOne
+	@Embedded
 	private Endereco end;
 
 	public Long getId() {

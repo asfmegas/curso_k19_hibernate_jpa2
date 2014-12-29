@@ -31,11 +31,6 @@ public class AdicionarDados extends HttpServlet {
 			Pessoa2 p = new Pessoa2();
 			p.setNome("Pessoa Voip");
 			
-			/*erro
-			 * dez 29, 2014 6:04:06 PM org.hibernate.cfg.annotations.EntityBinder bindTable
-				INFORMAÇÕES: Bind entity curso.k19.tabela10.Pessoa2 on table Pessoa2
-			 */
-			
 			try{
 				em.getTransaction().begin();
 				
