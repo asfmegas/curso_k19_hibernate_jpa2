@@ -3,6 +3,7 @@ package curso.k19.tabela4.OneToOne;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,7 +17,7 @@ public class Estado {
 	private String nome;
 	
 	@OneToOne
-	private Governador governador;
+	private Governador gov;
 	
 	public Estado() {
 	
@@ -39,11 +40,11 @@ public class Estado {
 	}
 
 	public Governador getGovernador() {
-		return governador;
+		return gov;
 	}
 
 	public void setGovernador(Governador governador) {
-		this.governador = governador;
+		this.gov = governador;
 	}
 	
 	

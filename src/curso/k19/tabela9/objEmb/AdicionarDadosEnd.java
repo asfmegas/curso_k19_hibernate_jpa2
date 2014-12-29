@@ -1,7 +1,8 @@
-package curso.k19.tabela4.OneToOne;
+package curso.k19.tabela9.objEmb;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.GregorianCalendar;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,11 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AdicionarEstadoGovernador")
-public class AdicionarEstadoGovernador extends HttpServlet {
+@WebServlet("/AdicionarDadosEnd")
+public class AdicionarDadosEnd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdicionarEstadoGovernador() {
+    public AdicionarDadosEnd() {
         super();
     }
 
@@ -24,38 +25,40 @@ public class AdicionarEstadoGovernador extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		try{
 			EntityManagerFactory factory = 
-					Persistence.createEntityManagerFactory("sistema");
+				Persistence.createEntityManagerFactory("sistema");
 			
 			EntityManager em = factory.createEntityManager();
+			Pessoa p = new Pessoa();
+			p.setNome("Carbono Torrado dos Santos");
+			p.setNasc(new GregorianCalendar(1964,8,24));
+			
+			Endereco end = new Endereco();
+			end.setRua("Rua da Amizade");
+			end.setBairro("Centro");
+			
+			p.setEnd(end);
+			
 			try{
 				em.getTransaction().begin();
-				Governador gov = new Governador();
-				Estado uf = new Estado();
-				
-				gov.setNome("Julio Cesar");
-				uf.setNome("Roma");
-				uf.setGovernador(gov);
-				
-				em.persist(gov);
-				em.persist(uf);
+				em.persist(p);
+				em.persist(end);
 				
 				em.getTransaction().commit();
-				out.println("Dados salvos com sucesso!<br /> ");
-				
+				out.println("Dados salvos com sucesso!!");
 			}catch(Exception e){
-				out.println("Erro ao salvar dados nas tabelas<br /> "+e.getMessage());
 				em.getTransaction().rollback();
+				out.println("Erro ao salvar dados!<br />"+e.getMessage());
 			}
+			
 			em.close();
-			
 			factory.close();
-			
 		}catch(Exception e){
-			out.println("Erro ao criar tabelas<br /> "+e.getMessage());
+			out.println("Erro ao criar tabelas!<br />"+e.getMessage());
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	}
 
 }
