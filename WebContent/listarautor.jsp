@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title></title>
+<title>Listar Dados</title>
 </head>
 <body>
 	<table width="100%" border="1">
