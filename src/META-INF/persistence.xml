@@ -9,7 +9,7 @@
          <property name="hibernate.connection.username" value="root"/>
          <property name="hibernate.connection.password" value="asfmegas18"/>
          
-         <property name="hibernate.hbm2ddl.auto" value="create" />
+         <property name="hibernate.hbm2ddl.auto" value="false" />
          
          <property name="hibernate.connection.url" value="jdbc:mysql://localhost/bdcursok19" />
          <property name="hibernate.max_fetch_depth" value="3"/>

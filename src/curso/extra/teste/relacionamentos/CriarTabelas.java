@@ -27,6 +27,7 @@ public class CriarTabelas extends HttpServlet {
 					Persistence.createEntityManagerFactory("sistema");
 			EntityManager em = factory.createEntityManager();
 			
+			/*
 			Curso curso = new Curso();
 			curso.setNome("Analise e Desenvolvimento de Sistemas");
 			curso.setCarga(850);
@@ -41,10 +42,44 @@ public class CriarTabelas extends HttpServlet {
 			
 			curso.getDisc().add(disc);
 			
+			*/
+			/*
+			//Cadastrar novo curso
+			//Cadastrado com sucesso!
+			Curso curso2 = new Curso();
+			curso2.setNome("Redes");
+			curso2.setCarga(900);
+			curso2.setObservacao("alguma coisa");
+			
+			
+			//Cadastrar nova disciplina
+			//Cadastrado com sucesso!
+			Disciplina disc2 = new Disciplina();
+			disc2.setNome("TCP/IP");
+			disc2.setCarga(80);
+			disc2.setNatureza("exatas");
+			disc2.setObjetivo("algum");
+			disc2.setObservacao("alguma coisa também");
+			*/
+			
+			
+			Curso curso3 = null;
+			Disciplina disc3 = null;
+	
 			try{
 				em.getTransaction().begin();
-				em.persist(disc);
-				em.persist(curso);
+				//em.persist(disc);
+				//em.persist(curso);
+				//em.persist(curso2);
+				//em.persist(disc2);
+				
+				curso3 = em.find(Curso.class, 1);
+				disc3 = em.find(Disciplina.class, 1);
+				
+				curso3.setNome(curso3.getNome());
+				curso3.setCarga(curso3.getCarga());
+				curso3.setObservacao(curso3.getObservacao());
+				curso3.getDisc().add(disc3);
 				
 				em.getTransaction().commit();
 			}catch(Exception e){
@@ -57,9 +92,7 @@ public class CriarTabelas extends HttpServlet {
 			out.println("<h1><font color='#2f1f1f'>Erro ao criar tabelas!</font></h1><br />"+e.getMessage());
 		}
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
-
 }
