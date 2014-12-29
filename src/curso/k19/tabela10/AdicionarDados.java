@@ -2,7 +2,6 @@ package curso.k19.tabela10;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.GregorianCalendar;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,9 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import curso.k19.tabela9.objEmb.Endereco;
-import curso.k19.tabela9.objEmb.Pessoa;
 
 @WebServlet("/AdicionarDados")
 public class AdicionarDados extends HttpServlet {
@@ -29,12 +25,21 @@ public class AdicionarDados extends HttpServlet {
 		try{
 			EntityManagerFactory factory = 
 				Persistence.createEntityManagerFactory("sistema");
-			/*
+			
 			EntityManager em = factory.createEntityManager();
+			
+			Pessoa2 p = new Pessoa2();
+			p.setNome("Pessoa Voip");
+			
+			/*erro
+			 * dez 29, 2014 6:04:06 PM org.hibernate.cfg.annotations.EntityBinder bindTable
+				INFORMAÇÕES: Bind entity curso.k19.tabela10.Pessoa2 on table Pessoa2
+			 */
 			
 			try{
 				em.getTransaction().begin();
-
+				
+				em.persist(p);
 				
 				em.getTransaction().commit();
 				out.println("Dados salvos com sucesso!!");
@@ -44,7 +49,7 @@ public class AdicionarDados extends HttpServlet {
 			}
 			
 			em.close();
-			*/
+			
 			out.println("muito sucesso!!");
 			factory.close();
 		}catch(Exception e){
