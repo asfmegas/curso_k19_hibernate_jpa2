@@ -31,7 +31,10 @@ public class Curso {
 	private String observacao;
 	
 	@ManyToMany
-	@JoinTable(name="curso_disc",joinColumns=@JoinColumn(name="curso_id"),inverseJoinColumns=@JoinColumn(name="disc_id"))
+	@JoinTable(
+			name="tbcurso_disc",
+			joinColumns=@JoinColumn(name="curso_id"),
+			inverseJoinColumns=@JoinColumn(name="disc_id"))
 	private List<Disciplina> disc = new ArrayList<Disciplina>();
 	
 	public Curso() {
