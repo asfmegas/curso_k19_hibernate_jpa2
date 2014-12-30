@@ -29,10 +29,12 @@ public class CriarTabelas2 extends HttpServlet {
 			EntityManager em = factory.createEntityManager();
 			
 			Aluno aluno = new Aluno();
+			
 			aluno.setNome("Carbono Torrado da Silva");
 			aluno.setNasc(new GregorianCalendar(1999,12,1));
 			aluno.setEmail("carbonoT@gmail.com");
 			aluno.setRua("Amizade");
+			aluno.setNumero(123);
 			aluno.setBairro("Centro");
 			aluno.setCep("60000000");
 			aluno.setCidade("Fortaleza");
@@ -45,15 +47,14 @@ public class CriarTabelas2 extends HttpServlet {
 			fone1.setNumero("55558548");
 			fone1.setTipo('1');
 			fone1.setOperadora("Tim");
+			fone1.setAlu(aluno);
 			
 			fone2.setDdd(85);
 			fone2.setNumero("22225878");
 			fone2.setTipo('0');
 			fone2.setOperadora("Oi");
+			fone2.setAlu(aluno);
 			
-			aluno.getFone().add(fone1);
-			aluno.getFone().add(fone2);
-			 
 			try{
 				em.getTransaction().begin();
 				em.persist(aluno);

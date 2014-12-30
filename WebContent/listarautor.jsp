@@ -1,6 +1,6 @@
+<%@page import="curso.k19.tabela1.Editora"%>
 <%@page import="curso.k19.tabela1.Autor"%>
 <%@page import="java.util.List"%>
-<%@page import="curso.k19.tabela1.Editora"%>
 <%@page import="javax.persistence.Query"%>
 <%@page import="javax.persistence.EntityManager"%>
 <%@page import="javax.persistence.Persistence"%>

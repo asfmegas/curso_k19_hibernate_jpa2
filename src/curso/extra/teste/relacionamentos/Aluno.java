@@ -1,14 +1,11 @@
 package curso.extra.teste.relacionamentos;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,7 +15,7 @@ import javax.persistence.TemporalType;
 public class Aluno {
 	
 	@Id @GeneratedValue
-	@Column(name="idalu")
+	@Column(name="id")
 	private Long id;
 	
 	@Column(name="nome",length=150,nullable=false)
@@ -47,9 +44,6 @@ public class Aluno {
 	
 	@Column(name="cep",length=10)
 	private String cep;
-	
-	@OneToMany
-	private List<Fone> fone = new ArrayList<Fone>();
 	
 	public Aluno() {
 		super();
@@ -134,13 +128,4 @@ public class Aluno {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-
-	public List<Fone> getFone() {
-		return fone;
-	}
-
-	public void setFone(List<Fone> fone) {
-		this.fone = fone;
-	}
-	
 }

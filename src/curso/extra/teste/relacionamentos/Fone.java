@@ -1,14 +1,11 @@
 package curso.extra.teste.relacionamentos;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,20 +13,24 @@ import javax.persistence.Table;
 public class Fone {
 	
 	@Id @GeneratedValue
-	@Column(name="idfone")
+	@Column(name="id")
 	private Long id;
 	
 	@Column(name="ddd",nullable=false)
 	private Integer ddd;
 	
-	@Column(name="ddd",length=15)
+	@Column(name="numeo",length=15)
 	private String numero;
 	
-	@Column(name="ddd")
+	@Column(name="tipo")
 	private Character tipo;
 	
-	@Column(name="ddd",length=20)
+	@Column(name="operadora",length=20)
 	private String operadora;
+	
+	@ManyToOne
+	@JoinColumn(name="fone_idalu")
+	private Aluno alu;
 	
 	public Fone() {
 		super();
@@ -74,4 +75,13 @@ public class Fone {
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
 	}
+
+	public Aluno getAlu() {
+		return alu;
+	}
+
+	public void setAlu(Aluno alu) {
+		this.alu = alu;
+	}
+	
 }
