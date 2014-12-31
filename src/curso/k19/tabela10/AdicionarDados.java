@@ -31,10 +31,18 @@ public class AdicionarDados extends HttpServlet {
 			Pessoa2 p = new Pessoa2();
 			p.setNome("Pessoa Voip");
 			
+			PessoaJuridica pj = new PessoaJuridica();
+			pj.setNome("Pessoa Juridica");
+			
+			PessoaFisica pf = new PessoaFisica();
+			pf.setNome("Pessoa Fisica");
+			
 			try{
 				em.getTransaction().begin();
 				
 				em.persist(p);
+				em.persist(pj);
+				em.persist(pf);
 				
 				em.getTransaction().commit();
 				out.println("Dados salvos com sucesso!!");

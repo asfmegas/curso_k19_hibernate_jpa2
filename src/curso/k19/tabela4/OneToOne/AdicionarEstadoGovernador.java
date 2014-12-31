@@ -30,11 +30,13 @@ public class AdicionarEstadoGovernador extends HttpServlet {
 			try{
 				em.getTransaction().begin();
 				Governador gov = new Governador();
-				Estado uf = new Estado();
-				
 				gov.setNome("Julio Cesar");
+				
+				Estado uf = new Estado();
 				uf.setNome("Roma");
 				uf.setGovernador(gov);
+				gov.setEstado(uf);
+				
 				
 				em.persist(gov);
 				em.persist(uf);
