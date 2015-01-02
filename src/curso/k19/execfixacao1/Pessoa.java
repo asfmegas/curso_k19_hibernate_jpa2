@@ -1,19 +1,16 @@
-package curso.k19.tabela7.ManyToMany;
+package curso.k19.execfixacao1;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Escritor {
+public class Pessoa {
 
 	@Id @GeneratedValue
 	private Long id;
 	
 	private String nome;
-	
-	public Escritor() {
-	}
 
 	public Long getId() {
 		return id;
@@ -30,6 +27,4 @@ public class Escritor {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
 }

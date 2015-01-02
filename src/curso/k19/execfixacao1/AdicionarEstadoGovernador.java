@@ -1,4 +1,4 @@
-package curso.k19.tabela1;
+package curso.k19.execfixacao1;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,49 +12,54 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/GeraTabelas")
-public class GeraTabelas extends HttpServlet {
+@WebServlet("/AdicionarEstadoGovernador")
+public class AdicionarEstadoGovernador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public GeraTabelas() {
+    public AdicionarEstadoGovernador() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		
 		try{
 			EntityManagerFactory factory = 
 					Persistence.createEntityManagerFactory("sistema");
 			
 			EntityManager em = factory.createEntityManager();
-			
-			em.getTransaction().begin();
-			//salvando dados
-			Autor autor = new Autor();
-			autor.setNome("William Shekespeare");
-			Editora ed = new Editora();
-			ed.setNome("evolucao");
-			ed.setEmail("evolucao@.ev.com");
-			
 			try{
-			em.persist(autor);
-			em.persist(ed);
-			em.getTransaction().commit();
+				// ABRINDO A TRASACAO
+				em.getTransaction().begin();
+				
+				// OBJETO NO ESTADO NEW
+				Pessoa p = new Pessoa();
+				p.setNome("Julio Cesar");	
+				
+				// OBJETO NO ESTADO MANAGED
+				em.persist(p);
+				
+				// SINCRONIZANDO E CONFIRMANDO A TRANSACAO
+				em.getTransaction().commit();
+				
+				out.println("Id: "+p.getId());
+				out.println("Nome: "+p.getNome());
+				
+				response.sendRedirect("FindManager");
+				
 			}catch(Exception e){
+				out.println("Erro ao salvar dados nas tabelas<br /> "+e.getMessage());
 				em.getTransaction().rollback();
 			}
-
+			em.close();
+			
 			factory.close();
-			response.sendRedirect("listarautor.jsp");
-			//out.println("<h1>Tabelas criadas com sucesso!</h1>");
+			
 		}catch(Exception e){
-			out.println("Erro ao gerar tabelas "+e.getMessage());
+			out.println("Erro ao criar tabelas<br /> "+e.getMessage());
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	}
 
 }
