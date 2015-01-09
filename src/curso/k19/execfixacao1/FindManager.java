@@ -12,24 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class FindManager
- */
 @WebServlet("/FindManager")
 public class FindManager extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public FindManager() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		try{
@@ -38,6 +29,10 @@ public class FindManager extends HttpServlet {
 			
 			EntityManager em = factory.createEntityManager();
 			try{
+				
+				
+				//out.println("Teste");
+				
 				
 				Pessoa pessoa = em.find(Pessoa.class, 1L);
 				out.println("Id: "+pessoa.getId());
@@ -58,7 +53,7 @@ public class FindManager extends HttpServlet {
 				out.println("<br />");
 				out.println("Nome: "+p.getNome());
 				
-				
+				/*
 				Pessoa ps = em.find(Pessoa.class, 1L);
 				em.getTransaction().begin();
 				
@@ -67,6 +62,9 @@ public class FindManager extends HttpServlet {
 				em.getTransaction().commit();
 				out.println("<br /><br />Dados removidos com sucesso!<br /><br />");
 				
+				*/
+				
+				out.println("<br /><br /><a href='RemoveDados'>Remover dados</a><br /><br />");
 			}catch(Exception e){
 				out.println("Erro ao salvar dados nas tabelas<br /> "+e.getMessage());
 				em.getTransaction().rollback();
@@ -80,9 +78,6 @@ public class FindManager extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}

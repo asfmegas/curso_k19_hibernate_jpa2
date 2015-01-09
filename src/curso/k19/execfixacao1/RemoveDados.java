@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AdicionarEstadoGovernador")
-public class AdicionarEstadoGovernador extends HttpServlet {
+@WebServlet("/RemoveDados")
+public class RemoveDados extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdicionarEstadoGovernador() {
+    public RemoveDados() {
         super();
     }
 
@@ -28,41 +28,27 @@ public class AdicionarEstadoGovernador extends HttpServlet {
 			
 			EntityManager em = factory.createEntityManager();
 			try{
-				// ABRINDO A TRASACAO
+				
+				Pessoa ps = em.find(Pessoa.class, 1L);
 				em.getTransaction().begin();
 				
-				// OBJETO NO ESTADO NEW
-				Pessoa p = new Pessoa();
-				p.setNome("Julio Cesar");	
+				em.remove(ps);
 				
-				// OBJETO NO ESTADO MANAGED
-				em.persist(p);
-				
-				// SINCRONIZANDO E CONFIRMANDO A TRANSACAO
 				em.getTransaction().commit();
+				out.println("<br /><br />Dados removidos com sucesso!<br /><br />");
 				
-				out.println("Id: "+p.getId());
-				out.println("Nome: "+p.getNome());
-				
-				out.println("<a href='FindManager'>Pesquisa</a>");
-				
-				//response.sendRedirect("FindManager");
 				
 			}catch(Exception e){
 				out.println("Erro ao salvar dados nas tabelas<br /> "+e.getMessage());
 				em.getTransaction().rollback();
 			}
-			em.close();
-			
-			factory.close();
-			
 		}catch(Exception e){
 			out.println("Erro ao criar tabelas<br /> "+e.getMessage());
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 	}
 
 }
